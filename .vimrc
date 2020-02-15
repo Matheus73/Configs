@@ -1,6 +1,7 @@
 "==========================================================================================================
 "                                       .VIMRC
 "                                Made by Matheus Gabriel
+"                                     Version 1.0
 "==========================================================================================================
 
 
@@ -86,3 +87,4 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mattn/emmet-vim'
+
