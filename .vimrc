@@ -15,8 +15,9 @@ set number
 "Theme Configs
 "==========================================================================================================
 
-colorscheme industry
 let g:airline_theme = 'tomorrow'
+syntax enable
+set background=dark
 
 "==========================================================================================================
 "Tab configs
@@ -87,4 +88,4 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mattn/emmet-vim'
-
+Plugin 'altercation/vim-colors-solarized'
