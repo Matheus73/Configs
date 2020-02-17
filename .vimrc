@@ -1,9 +1,8 @@
-"==========================================================================================================
-"                                       .VIMRC
-"                                Made by Matheus Gabriel
-"                                     Version 1.0
-"==========================================================================================================
 
+
+"==========================================================================================================
+"                                Made by Matheus Gabriel
+"==========================================================================================================
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -14,7 +13,6 @@ set number
 "==========================================================================================================
 "Theme Configs
 "==========================================================================================================
-
 let g:airline_theme = 'tomorrow'
 syntax enable
 set background=dark
@@ -36,6 +34,58 @@ nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 nnoremap <C-n> :tabnew<CR>
 
+"==========================================================================================================
+"Configs of Emmet.vim
+"==========================================================================================================
+let g:user_emmet_leader_key='<C-Z>'
+
+"==========================================================================================================
+"Config Show my keys presseds
+"==========================================================================================================
+set showcmd
+
+
+
+"==========================================================================================================
+"Config Rainbow Brackets
+"==========================================================================================================
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+"==========================================================================================================
+"Confing Sytatic Plugin
+"==========================================================================================================
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
+let g:syntastic_css_checkers = ['csslint']
+let g:syntastic_css_csslint_exec = 'csslint'
+
+" Autofix entire buffer with eslint_d:
+ nnoremap <leader>f mF:%!eslint_d --stdin --fix-to-stdout<CR>`F
+" " Autofix visual selection with eslint_d:
+ vnoremap <leader>f :!eslint_d --stdin --fix-to-stdout<CR>gv"`
+
+
+"==========================================================================================================
+" Start autocompletion after 4 chars
+let g:ycm_min_num_of_chars_for_completion = 4
+let g:ycm_min_num_identifier_candidate_chars = 4
+let g:ycm_enable_diagnostic_highlighting = 0
+" Don't show YCM's preview window [ I find it really annoying ]
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
+"==========================================================================================================
+let g:javascript_plugin_jsdoc = 1
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -89,3 +139,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mattn/emmet-vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'pangloss/vim-javascript'
+
