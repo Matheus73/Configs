@@ -60,7 +60,6 @@ Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'tomasr/molokai'
-Plug 'tpope/vim-fugitive'
 call plug#end()
 
 "Config of ALE
