@@ -60,6 +60,7 @@ Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'tomasr/molokai'
+Plug 'wesQ3/vim-windowswap'
 call plug#end()
 
 "Config of ALE
@@ -80,7 +81,12 @@ syntax enable
 set background=dark
 set showcmd
 
-" Config of emmet Plugin
+" Config NERDTreeToggle
+"let g:NERDTreeWinPos = "right"
+autocmd vimenter * NERDTree
+nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
+
+"Config of emmet Plugin
 let g:user_emmet_leader_key='<C-Z>'
 
 "Confi of Airline Plugin
@@ -100,3 +106,8 @@ let g:rehash256 = 1
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 nnoremap <C-n> :tabnew<CR>
+nnoremap <C-x> :bnext<CR>
+nnoremap <C-t> :term<CR>
+nnoremap <C-m> :res +5<CR>
+nnoremap <C-n> :res -5<CR>
+let @t =  ''
