@@ -61,6 +61,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'tomasr/molokai'
 Plug 'wesQ3/vim-windowswap'
+"Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 "Config of ALE
@@ -80,6 +81,7 @@ set expandtab
 syntax enable
 set background=dark
 set showcmd
+"set encoding=UTF-8
 
 " Config NERDTreeToggle
 "let g:NERDTreeWinPos = "right"
