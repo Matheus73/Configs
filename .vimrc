@@ -46,19 +46,24 @@ Plug '~/my-prototype-plugin'
 Plug 'sheerun/vim-polyglot'
 
 "Plug ALE (Log code)
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 
 "AUTO COMPLETE
+"need node JS
 " Use release branch (Recommend)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "Themes
 Plug 'rainglow/vim'
+" beatfull bar 
 Plug 'vim-airline/vim-airline'
+" Themes to airline plugin
 Plug 'vim-airline/vim-airline-themes'
+" emmet to html and css
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
+" Theme
 Plug 'tomasr/molokai'
 Plug 'wesQ3/vim-windowswap'
 "Plug 'ryanoasis/vim-devicons'
@@ -66,8 +71,8 @@ call plug#end()
 
 "Config of ALE
 "
-nmap <silent> [c <Plug>(ale_previous_wrap)
-nmap <silent> ]c <Plug>(ale_next_wrap)
+" nmap <silent> [c <Plug>(ale_previous_wrap)
+" nmap <silent> ]c <Plug>(ale_next_wrap)
 
 "Config of theme
 
@@ -79,10 +84,10 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 syntax enable
-set background=dark
+" set background=dark
 set showcmd
 "set encoding=UTF-8
-
+set updatetime=1
 " Config NERDTreeToggle
 "let g:NERDTreeWinPos = "right"
 autocmd vimenter * NERDTree
@@ -92,12 +97,13 @@ nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 let g:user_emmet_leader_key='<C-Z>'
 
 "Confi of Airline Plugin
-let g:airline_theme = 'tomorrow'
+let g:airline_theme = 'deus'
 let g:airline#extensions#tabline#enabled = 1
 "==========================================================================================================
 "Molokai Theme Config
 "==========================================================================================================
 
+colorscheme molokai
 let g:molokai_original = 1
 let g:rehash256 = 1
 
@@ -110,6 +116,7 @@ nnoremap <C-l> :tabnext<CR>
 nnoremap <C-n> :tabnew<CR>
 nnoremap <C-x> :bnext<CR>
 nnoremap <C-t> :term<CR>
+nnoremap <C-r> :set statusline^=%{coc#status()}  
 nnoremap <C-m> :res +5<CR>
 nnoremap <C-n> :res -5<CR>
 let @t =  ''
