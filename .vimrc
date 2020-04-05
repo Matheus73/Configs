@@ -51,8 +51,9 @@ Plug 'sheerun/vim-polyglot'
 "AUTO COMPLETE
 "need node JS
 " Use release branch (Recommend)
- Plug 'neoclide/coc.nvim', {'branch': 'release'}
+ Plug 'neoclide/coc.nvim' 
 
+ Plug  'hdima/python-syntax'
 "Themes
 Plug 'rainglow/vim'
 " beatfull bar 
@@ -64,7 +65,10 @@ Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 " Theme
+Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
+Plug 'joshdick/onedark.vim'
+Plug 'rakr/vim-one'
 Plug 'wesQ3/vim-windowswap'
 "Plug 'ryanoasis/vim-devicons'
 call plug#end()
@@ -75,7 +79,7 @@ call plug#end()
 " nmap <silent> ]c <Plug>(ale_next_wrap)
 
 "Config of theme
-
+" set termguicolors
 set number
 set linespace=3
 set guifont=Hack\ Code:h12
@@ -84,7 +88,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 syntax enable
-" set background=dark
+set background=dark
 set showcmd
 "set encoding=UTF-8
 set updatetime=1
@@ -97,15 +101,15 @@ nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 let g:user_emmet_leader_key='<C-Z>'
 
 "Confi of Airline Plugin
-let g:airline_theme = 'deus'
+let g:airline_theme = 'onedark'
 let g:airline#extensions#tabline#enabled = 1
 "==========================================================================================================
-"Molokai Theme Config
+" Theme Config
 "==========================================================================================================
 
-colorscheme molokai
-let g:molokai_original = 1
-let g:rehash256 = 1
+colorscheme gruvbox
+" let g:molokai_original = 1
+" let g:rehash256 = 1
 
 "==========================================================================================================
 "Shortcuts tabs configs
