@@ -12,3 +12,8 @@ This is my file of config to the Vim editor
 
 * Clone this repository 
 * Copy the file __.vimrc__ to home
+* Install the Coc-Python
+
+    ~~~~
+    CocInstall coc-python
+    ~~~~
