@@ -94,7 +94,13 @@ set showcmd
 set updatetime=1
 " Config NERDTreeToggle
 "let g:NERDTreeWinPos = "right"
-autocmd vimenter * NERDTree
+" ==============================
+" NERDTree Config
+" ==============================
+" when vim starts without files specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Reload NERDTree
 nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 
 "Config of emmet Plugin
