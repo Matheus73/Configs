@@ -17,3 +17,7 @@ This is my file of config to the Vim editor
     ~~~~
     CocInstall coc-python
     ~~~~
+
+* Install Spell Check
+
+    [Link to tutorial](https://www.vivaolinux.com.br/artigo/Corretor-Ortografico-no-Vim-Guia-definitivo)

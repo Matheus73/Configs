@@ -96,8 +96,17 @@ set showcmd
 "set encoding=UTF-8
 set updatetime=1
 " Config NERDTreeToggle
-"let g:NERDTreeWinPos = "right"
 " ==============================
+"let g:NERDTreeWinPos = "right"
+
+
+" ==============================
+"  SPELL
+" ==============================
+" set spell spelllang=pt
+
+
+"==============================
 " NERDTree Config
 " ==============================
 " when vim starts without files specified
