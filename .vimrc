@@ -119,13 +119,13 @@ nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 let g:user_emmet_leader_key='<C-Z>'
 
 "Confi of Airline Plugin
-let g:airline_theme = 'papercolor'
+let g:airline_theme = 'angr'
 let g:airline#extensions#tabline#enabled = 1
 "==========================================================================================================
 " Theme Config
 "==========================================================================================================
 
-colorscheme PaperColor 
+colorscheme default 
 " let g:molokai_original = 1
 " let g:rehash256 = 1
 
