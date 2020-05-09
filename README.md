@@ -12,6 +12,12 @@ This is my file of config to the Vim editor
 
 * Clone this repository 
 * Copy the file __.vimrc__ to home
+* Install node and npm and re-compile coc with:
+
+    ~~~
+    call coc#util#install()
+    [coc.nvim] Update completed
+    ~~~
 * Install the Coc-Python
 
     ~~~~
