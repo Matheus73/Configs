@@ -44,14 +44,14 @@ Plug '~/my-prototype-plugin'
 
 " Plug Poligloty sytax 
 Plug 'sheerun/vim-polyglot'
-
+Plug 'davidhalter/jedi-vim'
 "Plug ALE (Log code)
 " Plug 'dense-analysis/ale'
 
 "AUTO COMPLETE
 "need node JS
 " Use release branch (Recommend)
- Plug 'neoclide/coc.nvim' 
+"Plug 'neoclide/coc.nvim' 
 
  Plug  'hdima/python-syntax'
 "Themes
@@ -91,7 +91,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 syntax enable
-set background=light
+set background=dark
 set showcmd
 "set encoding=UTF-8
 set updatetime=1
@@ -119,13 +119,13 @@ nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 let g:user_emmet_leader_key='<C-Z>'
 
 "Confi of Airline Plugin
-let g:airline_theme = 'angr'
+let g:airline_theme = 'gruvbox'
 let g:airline#extensions#tabline#enabled = 1
 "==========================================================================================================
 " Theme Config
 "==========================================================================================================
 
-colorscheme default 
+colorscheme gruvbox
 " let g:molokai_original = 1
 " let g:rehash256 = 1
 
