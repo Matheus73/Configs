@@ -32,8 +32,18 @@
 URxvt.intensityStyles:	false
 URxvt.background:       [70]#000000
 URxvt.depth:		32
-URxvt.font: 		xft:monospace:size=11
+URxvt.font: 		xft:Hermit:size=11
 URxvt.scrollBar:	false
 URxvt.cursorColor:	white
 URxvt.transparent:   true
 URxvt.shading:       20
+
+!! Keys
+!! +++++++ Copy/Paste shortcuts +++++++++++++
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+!! ------ Copy/Paste disable defaults -------
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
+!! ------ Disable yellow box in botton
+URxvt.iso14755 : false
