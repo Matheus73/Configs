@@ -197,3 +197,5 @@ exec --no-startup-id setxkbmap -layout br
 #execulta o script de configuração do meu teclado
 #exec --no-startup-id ./.init.sh
 bindsym $mod+c exec ./.init.sh
+
+exec --no-startup-id xcompmgr &
