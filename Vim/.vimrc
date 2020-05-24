@@ -85,17 +85,12 @@ call plug#end()
 " set termguicolors
 set number
 set linespace=3
-set guifont=Hack\ Code:h12
-set cursorline
 set tabstop=4
 set shiftwidth=4
 set expandtab
 syntax enable
-set background=dark
 set showcmd
-"set encoding=UTF-8
 set updatetime=1
-" Config NERDTreeToggle
 " ==============================
 "let g:NERDTreeWinPos = "right"
 
@@ -104,14 +99,12 @@ set updatetime=1
 "  SPELL
 " ==============================
 " set spell spelllang=pt
-
+set bg=dark
 
 "==============================
 " NERDTree Config
 " ==============================
 " when vim starts without files specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Reload NERDTree
 nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 
@@ -119,15 +112,12 @@ nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 let g:user_emmet_leader_key='<C-Z>'
 
 "Confi of Airline Plugin
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'minimalist'
 let g:airline#extensions#tabline#enabled = 1
 "==========================================================================================================
 " Theme Config
 "==========================================================================================================
 
-colorscheme gruvbox
-" let g:molokai_original = 1
-" let g:rehash256 = 1
 
 "==========================================================================================================
 "Shortcuts tabs configs
