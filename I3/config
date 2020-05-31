@@ -30,7 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec rxvt-unicode
+bindsym $mod+Return exec rxvt
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -182,7 +182,7 @@ exec --no-startup-id xautolock -time 5 -locker lock
 bindsym $mod+Control+l exec /bin/lock 
 
 #wallpaper
-exec --no-startup-id feh --bg-fill ~/Images/Wallpapers/wallpaper7.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper1.jpg
 
 #inicia o flameshot 
 exec --no-startup-id flameshot &
@@ -194,8 +194,7 @@ bindsym $mod+Control+Up exec pactl -- set-sink-volume 0 +10%
 #Define layout do teclado
 exec --no-startup-id setxkbmap -layout br
 
-#execulta o script de configuração do meu teclado
-#exec --no-startup-id ./.init.sh
-bindsym $mod+c exec ./.init.sh
-
+#URXVT transparency
 exec --no-startup-id xcompmgr &
+#Touchpad 
+exec --no-startup-id xinput set-prop 11 305 1
