@@ -4,6 +4,45 @@
 "
 "=====================================================
 
+"+++++++++++++++++++++++++
+" GENERAL
+"+++++++++++++++++++++++++
+set linespace=3
+set expandtab
+set autoread
+set number
+set bg=dark
+set ruler
+set showcmd
+set wildmenu
+set wildmode=list:longest,full
+set nowrap
+set ttimeoutlen=10 " <esc> O
+set expandtab
+
+
+"+++++++++++++++++++++++++
+" INDENTATION
+"+++++++++++++++++++++++++
+set autoindent 
+set tabstop=4
+set shiftwidth=4
+filetype plugin indent on
+
+"+++++++++++++++++++++++++
+" SEARCH
+"+++++++++++++++++++++++++
+set incsearch  " Starts search while typing
+set ignorecase
+set smartcase  " Case sensitive if has upper
+
+"+++++++++++++++++++++++++
+" FUNCTIONS
+"+++++++++++++++++++++++++
+function! FindConfig(prefix, what, where)
+    let cfg = findfile(a:what, escape(a:where, ' ') . ';')
+    return cfg !=# '' ? ' ' . a:prefix . ' ' . shellescape(cfg) : ''
+endfunction
 
 
 "=====================================================
@@ -11,118 +50,60 @@
 "=====================================================
 
 call plug#begin('~/.vim/plugged')
+"------------------
+" General
+"------------------
 
-" Make sure you use single quotes
-
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'junegunn/vim-easy-align'
-
-" Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Using a non-master branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Unmanaged plugin (manually installed and updated)
-Plug '~/my-prototype-plugin'
-
-" Plug Poligloty sytax 
-Plug 'sheerun/vim-polyglot'
-Plug 'davidhalter/jedi-vim'
-"Plug ALE (Log code)
-" Plug 'dense-analysis/ale'
-
-"AUTO COMPLETE
-"need node JS
-" Use release branch (Recommend)
-"Plug 'neoclide/coc.nvim' 
-
- Plug  'hdima/python-syntax'
-"Themes
-Plug 'rainglow/vim'
-" beatfull bar 
-Plug 'vim-airline/vim-airline'
-" Themes to airline plugin
 Plug 'vim-airline/vim-airline-themes'
-" emmet to html and css
+Plug 'scrooloose/nerdtree'
+
+"------------------
+" Python
+"------------------
+
+Plug  'hdima/python-syntax'
+
+"------------------
+" Go
+"------------------
+
+Plug 'fatih/vim-go'
+
+"------------------
+" Markdown
+"------------------
+
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'plasticboy/vim-markdown'
+
+"------------------
+" HTML
+"------------------
+
 Plug 'mattn/emmet-vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'airblade/vim-gitgutter'
-" Theme
-Plug 'junegunn/seoul256.vim'
-Plug 'morhetz/gruvbox'
-Plug 'tomasr/molokai'
-Plug 'crusoexia/vim-dream' 
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'joshdick/onedark.vim'
-Plug 'rakr/vim-one'
-Plug 'wesQ3/vim-windowswap'
-"Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
+"+++++++++++++++++++++++++
+" Emmet
+"+++++++++++++++++++++++++
 
-"Config of ALE
-"
-" nmap <silent> [c <Plug>(ale_previous_wrap)
-" nmap <silent> ]c <Plug>(ale_next_wrap)
+let g:user_emmet_leader_key=','
 
-"Config of theme
-" set termguicolors
-set number
-set linespace=3
-set tabstop=4
-set shiftwidth=4
-set expandtab
-syntax enable
-set showcmd
-set updatetime=1
-" ==============================
-"let g:NERDTreeWinPos = "right"
-
-
-" ==============================
-"  SPELL
-" ==============================
-" set spell spelllang=pt
-set bg=dark
-
-"==============================
+"+++++++++++++++++++++++++
 " NERDTree Config
-" ==============================
-" when vim starts without files specified
-" Reload NERDTree
+"+++++++++++++++++++++++++
+
 nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 
-"Config of emmet Plugin
-let g:user_emmet_leader_key='<C-Z>'
+"+++++++++++++++++++++++++
+" Python-higlith
+"+++++++++++++++++++++++++
 
-"Confi of Airline Plugin
-let g:airline_theme = 'minimalist'
-let g:airline#extensions#tabline#enabled = 1
-"==========================================================================================================
-" Theme Config
-"==========================================================================================================
-
+let g:python_highlight_all = 1
 
 "==========================================================================================================
 "Shortcuts tabs configs
 "==========================================================================================================
-
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 nnoremap <C-n> :tabnew<CR>
