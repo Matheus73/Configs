@@ -1,4 +1,4 @@
-"=====================================================
+" =====================================================
 "                   VIMRC 
 "              Matheus Gabriel
 "
@@ -9,9 +9,11 @@
 "+++++++++++++++++++++++++
 set linespace=3
 set expandtab
+set updatetime=300
 set autoread
 set number
 set bg=dark
+set encoding=UTF-8
 set ruler
 set showcmd
 set wildmenu
@@ -54,8 +56,14 @@ call plug#begin('~/.vim/plugged')
 " General
 "------------------
 
-Plug 'vim-airline/vim-airline-themes'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tomtom/tcomment_vim'
 Plug 'scrooloose/nerdtree'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline' 
+Plug 'vim-airline/vim-airline-themes'
 
 "------------------
 " Python
@@ -82,7 +90,21 @@ Plug 'plasticboy/vim-markdown'
 
 Plug 'mattn/emmet-vim'
 
+"------------------
+" CSS
+"------------------
+
+Plug 'ap/vim-css-color'
+
+
+"------------------
+" Javascript
+"------------------
+
+Plug 'pangloss/vim-javascript'
+
 call plug#end()
+
 "+++++++++++++++++++++++++
 " Emmet
 "+++++++++++++++++++++++++
@@ -94,12 +116,46 @@ let g:user_emmet_leader_key=','
 "+++++++++++++++++++++++++
 
 nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
+let NERDTreeShowHidden=1
+nmap <F6> :NERDTreeToggle<CR>
 
 "+++++++++++++++++++++++++
 " Python-higlith
 "+++++++++++++++++++++++++
 
 let g:python_highlight_all = 1
+
+"+++++++++++++++++++++++++
+" COC
+"+++++++++++++++++++++++++
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references) 
+" show prev and next error or warnig
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+"+++++++++++++++++++++++++
+" Airline
+"+++++++++++++++++++++++++
+
+let g:airline_theme='base16_spacemacs'
 
 "==========================================================================================================
 "Shortcuts tabs configs
@@ -109,7 +165,6 @@ nnoremap <C-l> :tabnext<CR>
 nnoremap <C-n> :tabnew<CR>
 nnoremap <C-x> :bnext<CR>
 nnoremap <C-t> :term<CR>
-nnoremap <C-r> :set statusline^=%{coc#status()}  
 nnoremap <C-m> :res +5<CR>
 nnoremap <C-n> :res -5<CR>
 let @t =  ''
