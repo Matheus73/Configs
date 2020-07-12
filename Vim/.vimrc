@@ -118,7 +118,8 @@ let g:user_emmet_leader_key=','
 nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 let NERDTreeShowHidden=1
 nmap <F6> :NERDTreeToggle<CR>
-
+autocmd vimenter * NERDTree
+let NERDTreeWinSize = 25
 "+++++++++++++++++++++++++
 " Python-higlith
 "+++++++++++++++++++++++++
