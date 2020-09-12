@@ -1,5 +1,5 @@
 " =====================================================
-"                   VIMRC 
+"                   vimrc 
 "              Matheus Gabriel
 "
 "=====================================================
@@ -7,6 +7,9 @@
 "+++++++++++++++++++++++++
 " GENERAL
 "+++++++++++++++++++++++++
+syntax enable
+set cursorline
+set t_Co=256
 set linespace=3
 set expandtab
 set updatetime=300
@@ -21,9 +24,12 @@ set wildmode=list:longest,full
 set nowrap
 set ttimeoutlen=10 " <esc> O
 set expandtab
+" set background=light
 
 
-"+++++++++++++++++++++++++
+
+
+""+++++++++++++++++++++++++
 " INDENTATION
 "+++++++++++++++++++++++++
 set autoindent 
@@ -55,15 +61,17 @@ call plug#begin('~/.vim/plugged')
 "------------------
 " General
 "------------------
-
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'tomtom/tcomment_vim'
+Plug 'nlknguyen/papercolor-theme'
 Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline' 
 Plug 'vim-airline/vim-airline-themes'
+Plug 'mhartington/oceanic-next'
 
 "------------------
 " Python
@@ -85,6 +93,12 @@ Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'plasticboy/vim-markdown'
 
 "------------------
+" Javascript
+"------------------
+
+Plug 'vim-scripts/mips.vim'
+
+"------------------
 " HTML
 "------------------
 
@@ -103,13 +117,17 @@ Plug 'ap/vim-css-color'
 
 Plug 'pangloss/vim-javascript'
 
+"------------------
+" Assembly
+"------------------
+
 call plug#end()
 
 "+++++++++++++++++++++++++
 " Emmet
 "+++++++++++++++++++++++++
 
-let g:user_emmet_leader_key=','
+" let g:user_emmet_leader_key=','
 
 "+++++++++++++++++++++++++
 " NERDTree Config
@@ -156,8 +174,9 @@ endfunction
 " Airline
 "+++++++++++++++++++++++++
 
-let g:airline_theme='base16_spacemacs'
-
+let g:airline_theme='dracula'
+" colorscheme OceanicNext
+colorscheme dracula
 "==========================================================================================================
 "Shortcuts tabs configs
 "==========================================================================================================
@@ -169,3 +188,5 @@ nnoremap <C-t> :term<CR>
 nnoremap <C-m> :res +5<CR>
 nnoremap <C-n> :res -5<CR>
 let @t =  ''
+
+let g:rainbow_active = 1
