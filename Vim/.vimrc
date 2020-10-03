@@ -7,8 +7,8 @@
 "+++++++++++++++++++++++++
 " GENERAL
 "+++++++++++++++++++++++++
+let &t_ut=''
 syntax enable
-set cursorline
 set t_Co=256
 set linespace=3
 set expandtab
@@ -24,8 +24,6 @@ set wildmode=list:longest,full
 set nowrap
 set ttimeoutlen=10 " <esc> O
 set expandtab
-" set background=light
-
 
 
 
@@ -64,14 +62,19 @@ call plug#begin('~/.vim/plugged')
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'tomtom/tcomment_vim'
-Plug 'nlknguyen/papercolor-theme'
 Plug 'scrooloose/nerdtree'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline' 
-Plug 'vim-airline/vim-airline-themes'
-Plug 'mhartington/oceanic-next'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+
+
+"------------------
+" COC
+"------------------
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-emmet', 'coc-tslint', 'coc-prettier']
 
 "------------------
 " Python
@@ -118,16 +121,15 @@ Plug 'ap/vim-css-color'
 Plug 'pangloss/vim-javascript'
 
 "------------------
-" Assembly
+" Typescript
 "------------------
 
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
+Plug 'https://github.com/harenome/vim-mipssyntax'
 call plug#end()
 
-"+++++++++++++++++++++++++
-" Emmet
-"+++++++++++++++++++++++++
-
-" let g:user_emmet_leader_key=','
 
 "+++++++++++++++++++++++++
 " NERDTree Config
@@ -138,6 +140,7 @@ let NERDTreeShowHidden=1
 nmap <F6> :NERDTreeToggle<CR>
 autocmd vimenter * NERDTree
 let NERDTreeWinSize = 25
+
 "+++++++++++++++++++++++++
 " Python-higlith
 "+++++++++++++++++++++++++
@@ -150,7 +153,9 @@ let g:python_highlight_all = 1
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+   
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -174,12 +179,11 @@ endfunction
 " Airline
 "+++++++++++++++++++++++++
 
-let g:airline_theme='dracula'
-" colorscheme OceanicNext
-colorscheme dracula
+" colorscheme dracula
 "==========================================================================================================
 "Shortcuts tabs configs
 "==========================================================================================================
+
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 nnoremap <C-n> :tabnew<CR>
