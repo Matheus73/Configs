@@ -41,13 +41,16 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty &
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec "rofi -combi-modi window,drun -show combi -show-icons -theme 'material'"
+# bindsym $mod+d exec "rofi -combi-modi window,drun,ssh &"
+# bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -184,7 +187,8 @@ bindsym $mod+r mode "resize"
 
 
 # set wallpaper.jpg as wallpaper
-exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
+# exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
+exec --no-startup-id wal -i ~/Pictures/wall.png
 # activate polybar no statup
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # disble capslock key
@@ -193,3 +197,4 @@ exec_always --no-startup-id setxkbmap -option caps:escape
 exec_always --no-startup-id xcompmgr &
 # shortcut to print region of screen
 bindsym $mod+Print exec flameshot gui
+new_window 1pixel
