@@ -1,0 +1,445 @@
+######################################################################
+# ____       _       _                   ____             __ _       #
+#|  _ \ ___ | |_   _| |__   __ _ _ __   / ___|___  _ __  / _(_) __ _ #
+#| |_) / _ \| | | | | '_ \ / _` | '__| | |   / _ \| '_ \| |_| |/ _` |#
+#|  __/ (_) | | |_| | |_) | (_| | |    | |__| (_) | | | |  _| | (_| |#
+#|_|   \___/|_|\__, |_.__/ \__,_|_|     \____\___/|_| |_|_| |_|\__, |#
+#              |___/                                           |___/ #
+######################################################################
+######################################################################
+
+#### bar config ####
+
+[bar/shadbar2]
+;font-0 ="Ubuntu Nerd Font:pixelsize=10,0"
+font-0 = Iosevka Term SS07:Bold:size=10,0
+font-1 = Arimo Nerd Font:size=12;0
+font-2 = Arimo Nerd Font:size=18;6
+font-3 = Arimo Nerd Font:size=15;4
+background = #003BC5
+fixed-center = true
+#padding-right = 1
+#separator ="    "
+line-size = 1
+bottom = true
+enable-ipc = true
+
+# bottom bar modules
+modules-left = title i3
+modules-center = x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 x14 x15 x16 x17 x18 x19 x20 
+modules-right = cpu memory filesystem temperature date wifi alsa backlight batteryscript
+
+[bar/hdmi2]
+monitor = ${env:MONITOR:HDMI-1}
+;font-0 ="Ubuntu Nerd Font:pixelsize=10,0"
+font-0 = Iosevka Term SS07:Bold:size=8;0
+font-1 = Arimo Nerd Font:size=12,0
+font-2 = Arimo Nerd Font:size=18;6
+font-3 = Arimo Nerd Font:size=15;4
+background = #003BC5
+fixed-center = true
+#padding-left = 1
+#separator ="    "
+line-size = 1
+bottom = true
+enable-ipc = true
+
+# bottom bar modules
+modules-left = title i3
+modules-center = x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 x14 x15 x16 x17 x18 x19 x20 
+modules-right = cpu memory filesystem temperature date wifi alsa backlight batteryscript
+
+
+#### polybar modules ####
+
+[module/alsa]
+type = internal/alsa
+label-volume = "墳 %percentage%%"
+label-muted = "ﱝ Muted"
+master-mixer = Master
+format-volume-background = #0E9AED
+format-volume-padding = 2
+use-ui-max = true
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+format-prefix = " "
+format-background = #0E9AED
+format-padding = 2
+
+[module/date]
+type = internal/date
+label = "  %date%, %time%"
+date= "%a %d/%m"
+format-background = #0E9AED
+format-padding = 2
+time = %H:%M
+
+
+[module/filesystem]
+type = internal/fs
+label-mounted = " %percentage_used%%"
+label-mounted-background = #0E9AED
+label-mounted-padding = 2
+fixed-values = true
+interval = 30
+mount-0 = /
+
+[module/i3]
+padding = 3
+margin = 3
+type = internal/i3
+index-sort = true
+enable-click = true
+enable-scroll = true
+pin-workspaces = true
+strip-wsnumbers = false
+reverse-scroll = false
+wrapping-scroll = false
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+fuzzy-match = true
+label-mode = %mode%
+label-focused = %name%
+label-focused-padding = 1
+label-urgent = %name%
+label-urgent-padding = 1
+label-unfocused = %name%
+label-unfocused-padding = 1
+label-focused-background = #92A9FF
+label-unfocused-background = #1433AE
+
+[module/memory]
+type = internal/memory
+label = "ﳔ %percentage_used%%"
+format-background = #0E9AED
+format-padding = 2
+interval = 1
+
+[module/title]
+type = internal/xwindow
+label-maxlen = 35
+label = "   Bigode "
+label-empty = "  Bigode  "
+format-background= #14D043
+format-padding = 2
+
+[module/wifi]
+type = internal/network
+format-padding = 3
+label-connected = "直 %essid%"
+label-disconnected = "直 OFF"
+label-connected-background = #0E9AED
+label-disconnected-background = #0E9AED
+label-disconnected-underline = #F00B25
+label-connected-padding = 2
+label-disconnected-padding = 2
+interface = wlan0
+interval = 1.0
+
+#### custom modules ####
+
+[module/batteryscript]
+type = custom/script
+interval = 50
+exec = sh ~/.config/polybar/batteryscript.sh
+format-background = #0E9AED
+
+
+[module/cmus]
+type = custom/script
+exec = sh $HOME/.config/polybar/cmus.sh
+click-left = cmus-remote --pause
+click-right = cmus-remote --stop
+exec-if = pgrep -x polybar
+label = "  %output%"
+interval = 1
+
+
+[module/x1]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 1
+hook-2 = taskbar labelfocused 1
+hook-3 = taskbar labelmin 1
+initial = 1
+format-padding = 0
+click-left = taskbar foco 1
+click-right = taskbar close 1
+click-middle = polybar-msg -p %pid% hook x1 2
+scroll-up = taskbar i3floating 1
+scroll-down = taskbar i3floating 1
+
+[module/x2]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 2
+hook-2 = taskbar labelfocused 2
+hook-3 = taskbar labelmin 2
+initial = 1
+format-padding = 0
+click-left = taskbar foco 2
+click-right = taskbar close 2
+click-middle = polybar-msg -p %pid% hook x2 2
+scroll-up = taskbar i3floating 2
+scroll-down = taskbar i3floating 2
+
+[module/x3]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 3
+hook-2 = taskbar labelfocused 3
+hook-3 = taskbar labelmin 3
+initial = 1
+format-padding = 0
+click-left = taskbar foco 3
+click-right = taskbar close 3
+click-middle = polybar-msg -p %pid% hook x3 2
+scroll-up = taskbar i3floating 3
+scroll-down = taskbar i3floating 3
+
+[module/x4]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 4
+hook-2 = taskbar labelfocused 4
+hook-3 = taskbar labelmin 4
+initial = 1
+format-padding = 0
+click-left = taskbar foco 4
+click-right = taskbar close 4
+click-middle = polybar-msg -p %pid% hook x4 2
+scroll-up = taskbar i3floating 4
+scroll-down = taskbar i3floating 4
+
+[module/x5]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 5
+hook-2 = taskbar labelfocused 5
+hook-3 = taskbar labelmin 5
+initial = 1
+format-padding = 0
+click-left = taskbar foco 5
+click-right = taskbar close 5
+click-middle = polybar-msg -p %pid% hook x5 2
+scroll-up = taskbar i3floating 5
+scroll-down = taskbar i3floating 5
+
+[module/x6]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 6
+hook-2 = taskbar labelfocused 6
+hook-3 = taskbar labelmin 6
+initial = 1
+format-padding = 0
+click-left = taskbar foco 6
+click-right = taskbar close 6
+click-middle = polybar-msg -p %pid% hook x6 2
+scroll-up = taskbar i3floating 6
+scroll-down = taskbar i3floating 6
+
+[module/x7]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 7
+hook-2 = taskbar labelfocused 7
+hook-3 = taskbar labelmin 7
+initial = 1
+format-padding = 0
+click-left = taskbar foco 7
+click-right = taskbar close 7
+click-middle = polybar-msg -p %pid% hook x7 2
+scroll-up = taskbar i3floating 7
+scroll-down = taskbar i3floating 7
+
+[module/x8]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 8
+hook-2 = taskbar labelfocused 8
+hook-3 = taskbar labelmin 8
+initial = 1
+format-padding = 0
+click-left = taskbar foco 8
+click-right = taskbar close 8
+click-middle = polybar-msg -p %pid% hook x8 2
+scroll-up = taskbar i3floating 8
+scroll-down = taskbar i3floating 8
+
+[module/x9]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 9
+hook-2 = taskbar labelfocused 9
+hook-3 = taskbar labelmin 9
+initial = 1
+format-padding = 0
+;;format-foreground = ${env:foreground}
+;format-background = ${env:color16}
+;format-underline = ${env:color16}
+;format-overline = ${env:color16}
+click-left = taskbar foco 9
+click-right = taskbar close 9
+click-middle = polybar-msg -p %pid% hook x9 2
+scroll-up = taskbar i3floating 9
+scroll-down = taskbar i3floating 9
+
+[module/x10]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 10
+hook-2 = taskbar labelfocused 10
+hook-3 = taskbar labelmin 10
+initial = 1
+format-padding = 0
+click-left = taskbar foco 10
+click-right = taskbar close 10
+click-middle = polybar-msg -p %pid% hook x10 2
+scroll-up = taskbar i3floating 10
+scroll-down = taskbar i3floating 10
+
+[module/x11]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 11
+hook-2 = taskbar labelfocused 11
+hook-3 = taskbar labelmin 11
+initial = 1
+format-padding = 0
+click-left = taskbar foco 11
+click-right = taskbar close 11
+click-middle = polybar-msg -p %pid% hook x11 2
+scroll-up = taskbar i3floating 11
+scroll-down = taskbar i3floating 11
+
+[module/x12]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 12
+hook-2 = taskbar labelfocused 12
+hook-3 = taskbar labelmin 12
+initial = 1
+format-padding = 0
+click-left = taskbar foco 12
+click-right = taskbar close 12
+click-middle = polybar-msg -p %pid% hook x12 2
+scroll-up = taskbar i3floating 12
+scroll-down = taskbar i3floating 12
+
+[module/x13]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 13
+hook-2 = taskbar labelfocused 13
+hook-3 = taskbar labelmin 13
+initial = 1
+format-padding = 0
+click-left = taskbar foco 13
+click-right = taskbar close 13
+click-middle = polybar-msg -p %pid% hook x13 2
+scroll-up = taskbar i3floating 13
+scroll-down = taskbar i3floating 13
+
+[module/x14]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 14
+hook-2 = taskbar labelfocused 14
+hook-3 = taskbar labelmin 14
+initial = 1
+format-padding = 0
+click-left = taskbar foco 14
+click-right = taskbar close 14
+click-middle = polybar-msg -p %pid% hook x14 2
+scroll-up = taskbar i3floating 14
+scroll-down = taskbar i3floating 14
+
+[module/x15]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 15
+hook-2 = taskbar labelfocused 15
+hook-3 = taskbar labelmin 15
+initial = 1
+format-padding = 0
+click-left = taskbar foco 15
+click-right = taskbar close 15
+click-middle = polybar-msg -p %pid% hook x15 2
+scroll-up = taskbar i3floating 15
+scroll-down = taskbar i3floating 15
+
+[module/x16]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 16
+hook-2 = taskbar labelfocused 16
+hook-3 = taskbar labelmin 16
+initial = 1
+format-padding = 0
+click-left = taskbar foco 16
+click-right = taskbar close 16
+click-middle = polybar-msg -p %pid% hook x16 2
+scroll-up = taskbar i3floating 16
+scroll-down = taskbar i3floating 16
+
+[module/x17]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 17
+hook-2 = taskbar labelfocused 17
+hook-3 = taskbar labelmin 17
+initial = 1
+format-padding = 0
+click-left = taskbar foco 17
+click-right = taskbar close 17
+click-middle = polybar-msg -p %pid% hook x17 2
+scroll-up = taskbar i3floating 17
+scroll-down = taskbar i3floating 17
+
+[module/x18]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 18
+hook-2 = taskbar labelfocused 18
+hook-3 = taskbar labelmin 18
+initial = 1
+format-padding = 0
+click-left = taskbar foco 18
+click-right = taskbar close 18
+click-middle = polybar-msg -p %pid% hook x18 2
+scroll-up = taskbar i3floating 18
+scroll-down = taskbar i3floating 18
+
+[module/x19]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 19
+hook-2 = taskbar labelfocused 19
+hook-3 = taskbar labelmin 19
+initial = 1
+format-padding = 0
+click-left = taskbar foco 19
+click-right = taskbar close 19
+click-middle = polybar-msg -p %pid% hook x19 2
+scroll-up = taskbar i3floating 19
+scroll-down = taskbar i3floating 19
+
+[module/x20]
+type = custom/ipc
+hook-0 = " "
+hook-1 = taskbar label 20
+hook-2 = taskbar labelfocused 20
+hook-3 = taskbar labelmin 20
+initial = 1
+format-padding = 0
+click-left = taskbar foco 20
+click-right = taskbar close 20
+click-middle = polybar-msg -p %pid% hook x20 2
+scroll-up = taskbar i3floating 20
+scroll-down = taskbar i3floating 20
+
+
+
