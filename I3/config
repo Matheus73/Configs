@@ -81,7 +81,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+j+h split h
+bindsym $mod+Shift+b split h
 
 # split in vertical orientation
 bindsym $mod+Shift+v split v
@@ -187,14 +187,36 @@ bindsym $mod+r mode "resize"
 
 
 # set wallpaper.jpg as wallpaper
-# exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
-exec --no-startup-id wal -i ~/Pictures/wall.png
+exec --no-startup-id feh --bg-fill ~/Pictures/water.jpg
+# exec --no-startup-id wal -i ~/Pictures/lain.jpg &
+# exec --no-startup-id feh --bg-fill /usr/share/backgrounds/xfce/paltanen.jpg
+# exec_always --no-startup-id wal -i /usr/share/backgrounds/xfce/paltanen.jpg
+
+
 # activate polybar no statup
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # disble capslock key
 exec_always --no-startup-id setxkbmap -option caps:escape
-# make a terminator transparent
+
+# make a term transparent
 exec_always --no-startup-id xcompmgr &
+
 # shortcut to print region of screen
 bindsym $mod+Print exec flameshot gui
-new_window 1pixel
+bindsym $mod+b exec chromium &
+for_window [class=".*"] border pixel 1
+exec_always --no-startup-id taskbar start
+exec_always --no-startup-id xrandr --output eDP-1 --brightness 1
+
+# exec_always --no-startup-id xrandr --output eDP-1 --brightness 0.8
+gaps outer 05
+gaps inner 10
+
+#  Muda o layout de pt-br to eng
+bindsym $mod+m exec setxkbmap us && setxkbmap -option caps:escape
+
+# set desktop background with custom effect
+exec_always --no-startup-id betterlockscreen -u ~/Pictures/lain.jpg
+
+bindsym $mod+shift+x exec betterlockscreen -l 
