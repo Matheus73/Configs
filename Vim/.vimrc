@@ -7,14 +7,17 @@
 "+++++++++++++++++++++++++
 " GENERAL
 "+++++++++++++++++++++++++
+let g:tex_flavor = 'latex'
 let &t_ut=''
 syntax enable
 set t_Co=256
 set linespace=3
+set cursorline 
 set expandtab
 set updatetime=300
 set autoread
 set number
+" set bg=light
 set bg=dark
 set encoding=UTF-8
 set ruler
@@ -24,8 +27,6 @@ set wildmode=list:longest,full
 set nowrap
 set ttimeoutlen=10 " <esc> O
 set expandtab
-
-
 
 ""+++++++++++++++++++++++++
 " INDENTATION
@@ -56,25 +57,32 @@ endfunction
 "=====================================================
 
 call plug#begin('~/.vim/plugged')
+
 "------------------
 " General
 "------------------
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'lifepillar/vim-solarized8'
+Plug 'morhetz/gruvbox'
+
 Plug 'ryanoasis/vim-devicons'
 Plug 'tomtom/tcomment_vim'
+Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
 
+"------------------
+" LaTeX
+"------------------
+
+Plug 'lervag/vimtex'
 
 "------------------
 " COC
 "------------------
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-emmet', 'coc-tslint', 'coc-prettier']
+" let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-emmet', 'coc-tslint', 'coc-prettier']
 
 "------------------
 " Python
@@ -93,14 +101,14 @@ Plug 'fatih/vim-go'
 "------------------
 
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 
 "------------------
-" Javascript
+" Assembly
 "------------------
 
 Plug 'vim-scripts/mips.vim'
-
+Plug 'https://github.com/harenome/vim-mipssyntax'
 "------------------
 " HTML
 "------------------
@@ -119,15 +127,14 @@ Plug 'ap/vim-css-color'
 "------------------
 
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 "------------------
 " Typescript
 "------------------
-
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
-Plug 'https://github.com/harenome/vim-mipssyntax'
 call plug#end()
 
 
@@ -138,7 +145,7 @@ call plug#end()
 nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 let NERDTreeShowHidden=1
 nmap <F6> :NERDTreeToggle<CR>
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 let NERDTreeWinSize = 25
 
 "+++++++++++++++++++++++++
@@ -151,16 +158,17 @@ let g:python_highlight_all = 1
 " COC
 "+++++++++++++++++++++++++
 
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
    
-" GoTo code navigation.
+" " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gu <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references) 
+"
 " show prev and next error or warnig
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
@@ -179,18 +187,23 @@ endfunction
 " Airline
 "+++++++++++++++++++++++++
 
-" colorscheme dracula
+"  colorscheme gruvbox
+"  colorscheme solarized8_flat
 "==========================================================================================================
 "Shortcuts tabs configs
 "==========================================================================================================
 
-nnoremap <C-h> :tabprevious<CR>
-nnoremap <C-l> :tabnext<CR>
-nnoremap <C-n> :tabnew<CR>
-nnoremap <C-x> :bnext<CR>
+" nnoremap <C-h> :tabprevious<CR>
+" nnoremap <C-l> :tabnext<CR>
+" " nnoremap <C-n> :tabnew<CR>
+" nnoremap <C-x> :bnext<CR>
 nnoremap <C-t> :term<CR>
+nnoremap <C-s> :!pdflatex main.tex<CR>
 nnoremap <C-m> :res +5<CR>
 nnoremap <C-n> :res -5<CR>
+nnoremap <C-z> "+p
+vnoremap <C-c> "+y
 let @t =  ''
-
-let g:rainbow_active = 1
+" let g:indentLine_bgcolor_term = 105
+" let g:indentLine_color_term = 15
+let g:go_fmt_command = "goimports"
