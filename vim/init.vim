@@ -12,14 +12,17 @@ syntax on
 set cursorline 
 set updatetime=50
 set autoread
+set relativenumber
 set number
-set bg=dark
+" set bg=dark
+set bg=light
 set encoding=UTF-8
+set foldmethod=manual
 " set conceallevel=0
 " let g:tex_flavor = 'latex'
 " " set laststatus=2 " to lightline work
 " let &t_ut=''
-set termguicolors
+" set termguicolors
 " " set t_Co=256
 " set linespace=3
 " " set bg=light
@@ -30,6 +33,7 @@ set termguicolors
 " set nowrap
 " set ttimeoutlen=10 " <esc> O
 
+set completeopt=menuone,noselect
 
 ""+++++++++++++++++++++++++
 " INDENTATION
@@ -91,8 +95,11 @@ call plug#begin('~/.vim/plugged')
 " Themes
 "------------------
 
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'kabouzeid/nvim-lspinstall'
 Plug 'lukas-reineke/indent-blankline.nvim'
 
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'crusoexia/vim-monokai'
 Plug 'dikiaap/minimalist'
 Plug 'lifepillar/vim-solarized8'
@@ -103,8 +110,9 @@ Plug 'rakr/vim-one'
 " General
 "------------------
 " Plug 'itchyny/lightline.vim'  " minmal status bar
-Plug 'vim-airline/vim-airline'
-Plug'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug'vim-airline/vim-airline-themes'
+Plug 'sheerun/vim-polyglot'
 Plug 'KKPMW/vim-sendtowindow' " send commands to REPL
 Plug 'ryanoasis/vim-devicons' " Icons in nerdTree
 Plug 'tomtom/tcomment_vim'    " to comment lines
@@ -133,8 +141,9 @@ Plug 'mechatroner/rainbow_csv'
 "------------------
 " Python
 "------------------
-" Plug  'davidhalter/jedi-vim'
-Plug  'hdima/python-syntax'
+" Plug 'davidhalter/jedi-vim'
+Plug 'vim-python/python-syntax'
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 
 "------------------
 " Go
@@ -183,9 +192,9 @@ nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 let NERDTreeShowHidden=1
 nmap <C-b> :NERDTreeToggle<CR>
 " autocmd vimenter * NERDTree
-let NERDTreeWinSize = 25
+let NERDTreeWinSize = 30
 let NERDTreeShowHidden=0
-
+let g:NERDTreeWinPos = "right"
 "+++++++++++++++++++++++++
 " Python-higlith
 "+++++++++++++++++++++++++
@@ -203,14 +212,15 @@ nmap <silent> gr <Plug>(coc-references)
 " show prev and next error or warnig
 nmap <silent> [ <Plug>(coc-diagnostic-prev)
 nmap <silent> ] <Plug>(coc-diagnostic-next)
+
 "+++++++++++++++++++++++++
 " Airline
 "+++++++++++++++++++++++++
-" colorscheme  monokai
-let g:neosolarized_termtrans=1
-runtime ./colors/NeoSolarized.vim
-colorscheme NeoSolarized
-let g:airline_theme='solarized'
+colorscheme onehalflight
+" let g:neosolarized_termtrans=1
+" runtime ./colors/NeoSolarized.vim
+" colorscheme NeoSolarized
+" let g:airline_theme='solarized'
 
 "==========================================================================================================
 "Shortcuts tabs configs
@@ -230,6 +240,7 @@ vnoremap <C-c> "+y
 let @t =  ''
 
 let g:go_fmt_command = "goimports"
+" let g:go_fmt_autosave = 0
 
 " Window Splits
 set splitbelow splitright
@@ -253,7 +264,6 @@ let g:lightline = {
       \ },
       \ }
 
-
 " Use tab to go to next option in coc
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 
@@ -261,4 +271,10 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 nnoremap <c-p> :FZF<CR>
 
 " Use space to disable highlight in search words
-:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" Use Autopep8 in current file
+nnoremap <F6> :!autopep8 --in-place --aggressive --aggressive %<CR>
+
+
+autocmd BufWinEnter * NERDTreeMirror
