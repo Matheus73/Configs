@@ -24,3 +24,5 @@
     *coc-go
     *coc-clangd
 
+* Para habilitar a copia para o clipboard no `POP OS` foi necessário:
+    `sudo apt install xsel`
