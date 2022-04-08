@@ -45,25 +45,31 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
-  use "numToStr/Comment.nvim" -- Easily comment stuff
   use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
-  use "akinsho/bufferline.nvim"
-  use "moll/vim-bbye"
-  use "nvim-lualine/lualine.nvim"
-  use "akinsho/toggleterm.nvim"
-  use "ahmedkhalf/project.nvim"
-  use "lewis6991/impatient.nvim"
-  use "lukas-reineke/indent-blankline.nvim"
-  use "goolord/alpha-nvim"
-  use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
-  use "folke/which-key.nvim"
-  use "tpope/vim-surround"
+  use 'tomtom/tcomment_vim'
+  use 'tpope/vim-surround'
+  use 'lukas-reineke/indent-blankline.nvim' -- show ident divisions
+
+  use 'github/copilot.vim'
+
+  use {
+    "zbirenbaum/copilot.lua",
+    event = "InsertEnter",
+    config = function ()
+      vim.schedule(function() require("copilot").setup() end)
+    end,
+  }
+
+  use {
+    "zbirenbaum/copilot-cmp",
+    after = {"copilot.lua", "nvim-cmp"},
+  }
 
   -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use "lunarvim/darkplus.nvim"
-  use 'folke/tokyonight.nvim'
+  use 'NLKNguyen/papercolor-theme'
+  use 'rakr/vim-one'
+
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
@@ -96,12 +102,12 @@ return packer.startup(function(use)
   use "lewis6991/gitsigns.nvim"
   use "tpope/vim-fugitive"
 
-  -- Rust
-  use "rust-lang/rust.vim" -- Official Rust Plugin
-  use "simrat39/rust-tools.nvim" -- To enable more of the features of rust-analyzer, such as inlay hints and more!
+  -- Python
+  use 'mechatroner/rainbow_csv'
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
+  -- Go
+  use 'fatih/vim-go'
+
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end

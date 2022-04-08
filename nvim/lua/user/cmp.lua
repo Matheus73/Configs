@@ -110,10 +110,11 @@ cmp.setup {
     end,
   },
   sources = {
+    { name = "copilot"  },
     { name = "nvim_lsp" },
-    { name = "luasnip" },
-    { name = "buffer" },
-    { name = "path" },
+    { name = "path"     },
+    { name = "luasnip"  },
+    { name = "buffer"   },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,

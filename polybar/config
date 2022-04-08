@@ -10,66 +10,79 @@
 
 #### bar config ####
 
-[bar/shadbar2]
-font-0 ="Ubuntu Nerd Font:pixelsize=10,0"
-background = #245EDC
-#background = #003BC5
+[bar/eDP-1-1]
+monitor=${env:MONITOR:}
+#width = 75%
+height = 22
+border-top-size = 10
+border-left-size = 15
+border-right-size = 15
+font-0 ="TerminessTTF Nerd Font:pixelsize=10,0"
+background = #eeeeee
+foreground = #000
 fixed-center = true
-#padding-right = 1
-#separator ="    "
+tray-position=right
+tray-background=#535353
+#separator =""
 line-size = 1
-bottom = true
+top = true
 
 # bottom bar modules
 modules-left = title i3
 modules-right = cpu memory filesystem temperature date wifi alsa backlight batteryscript
 
-[bar/hdmi2]
-monitor = ${env:MONITOR:HDMI-1}
+[bar/HDMI-1-1]
+monitor = ${env:MONITOR}
+height = 22
+border-top-size = 10
+border-left-size = 15
+border-right-size = 15
+foreground = #000
+monitor-strict = true
 font-0 ="Ubuntu Nerd Font:pixelsize=10,0"
-background = #245EDC
+background = #eeeeee
 fixed-center = true
 #padding-left = 1
 #separator ="    "
 line-size = 1
-bottom = true
+top = true
 
 # bottom bar modules
 modules-left = title i3
-modules-right = cpu memory filesystem temperature date wifi alsa backlight batteryscript
+# modules-right = cpu memory filesystem temperature date wifi alsa backlight batteryscript
 
 
 #### polybar modules ####
 
 [module/alsa]
 type = internal/alsa
-label-volume = "墳 %percentage%%"
+label-volume = "VOL %percentage%%"
 label-muted = "ﱝ Muted"
 master-mixer = Master
-format-volume-background = #0E9AED
+format-volume-background = #10a778
 format-volume-padding = 2
 use-ui-max = true
 
 [module/cpu]
 type = internal/cpu
 interval = 0.5
-format-prefix = " "
-format-background = #0E9AED
+format-prefix = " CPU "
+format-background = #d961dc
 format-padding = 2
 
 [module/date]
 type = internal/date
 label = "  %date%, %time%"
 date= "%a %d/%m"
-format-background = #0E9AED
+format-background = #64aaaf
 format-padding = 2
 time = %H:%M
 
 
 [module/filesystem]
 type = internal/fs
-label-mounted = " %percentage_used%%"
-label-mounted-background = #0E9AED
+label-mounted = " SSD %percentage_used%%"
+label-mounted-background = #dab752
 label-mounted-padding = 2
 fixed-values = true
 interval = 30
@@ -96,14 +109,14 @@ label-urgent = %name%
 label-urgent-padding = 1
 label-unfocused = %name%
 label-unfocused-padding = 1
-label-focused-background = #0E9AED
-label-unfocused-background = #1433AE
+label-focused-background = #bcbcbc
+#label-unfocused-background = #1433AE
 label-urgent-background = #F56575
 
 [module/memory]
 type = internal/memory
-label = "ﳔ %percentage_used%%"
-format-background = #0E9AED
+label = "ﳔ RAM %percentage_used%%"
+format-background = #e4859a
 format-padding = 2
 interval = 1
 
@@ -112,7 +125,7 @@ type = internal/xwindow
 label-maxlen = 35
 label = "   Bigode "
 label-empty = "  Bigode  "
-format-background= #14D043
+#format-background= #bcbcbc
 format-padding = 2
 
 [module/wifi]
@@ -134,7 +147,7 @@ interval = 1.0
 type = custom/script
 interval = 50
 exec = sh ~/.config/polybar/batteryscript.sh
-format-background = #0E9AED
+# format-background = #0E9AED
 
 
 [module/cmus]
