@@ -223,6 +223,11 @@ _G.packer_plugins = {
     path = "/home/matheus/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["vim-colors-solarized"] = {
+    loaded = true,
+    path = "/home/matheus/.local/share/nvim/site/pack/packer/start/vim-colors-solarized",
+    url = "https://github.com/altercation/vim-colors-solarized"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/matheus/.local/share/nvim/site/pack/packer/start/vim-fugitive",

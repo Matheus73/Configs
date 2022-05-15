@@ -69,6 +69,7 @@ return packer.startup(function(use)
   -- Colorschemes
   use 'NLKNguyen/papercolor-theme'
   use 'rakr/vim-one'
+  use 'altercation/vim-colors-solarized'
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
