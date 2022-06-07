@@ -50,6 +50,7 @@ return packer.startup(function(use)
   use 'tomtom/tcomment_vim'
   use 'tpope/vim-surround'
   use 'lukas-reineke/indent-blankline.nvim' -- show ident divisions
+  use 'tanvirtin/monokai.nvim'
 
   use 'github/copilot.vim'
 

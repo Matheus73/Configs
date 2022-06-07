@@ -138,6 +138,11 @@ _G.packer_plugins = {
     path = "/home/matheus/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
+  ["monokai.nvim"] = {
+    loaded = true,
+    path = "/home/matheus/.local/share/nvim/site/pack/packer/start/monokai.nvim",
+    url = "https://github.com/tanvirtin/monokai.nvim"
+  },
   ["nlsp-settings.nvim"] = {
     loaded = true,
     path = "/home/matheus/.local/share/nvim/site/pack/packer/start/nlsp-settings.nvim",

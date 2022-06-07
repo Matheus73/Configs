@@ -1,7 +1,7 @@
 vim.cmd [[
 try
-  colorscheme tokyonight
+  colorscheme monokai
 catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme PaperColor
+  colorscheme monokai_pro
 endtry
 ]]
